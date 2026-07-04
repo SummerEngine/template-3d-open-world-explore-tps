@@ -1,6 +1,5 @@
 # Summer Engine defaults
 .godot/
-*.import
 *.translation
 .DS_Store
 Thumbs.db
