@@ -1,0 +1,25 @@
+# Summer Engine defaults
+.godot/
+*.import
+*.translation
+.DS_Store
+Thumbs.db
+*.bak
+
+# AI tooling
+.claude/
+.specstory/
+
+# Summer Engine local-only state (SummerGit, caches, locks)
+.summer/local/
+_asset_staging/
+tools/tmp_checks/
+
+# Dependencies & build output
+node_modules/
+.next/
+__pycache__/
+*.pyc
+
+# Environment
+.env*

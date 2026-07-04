@@ -1,0 +1,334 @@
+[gd_scene format=3 uid="uid://b0drprp0qdkoe"]
+
+[ext_resource type="Script" uid="uid://bnym4m0x3fjfl" path="res://scripts/adventure_input_reader.gd" id="1_yq6so"]
+[ext_resource type="Script" uid="uid://le1e0ic3dvdk" path="res://scripts/adventure_terrain_grid.gd" id="2_fv21b"]
+[ext_resource type="Script" uid="uid://co4uejr1dsmms" path="res://scripts/terrain_flat_pad.gd" id="3_tel4y"]
+[ext_resource type="Script" uid="uid://skisntlhxned" path="res://scripts/adventure_environment_prop_setup.gd" id="4_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://d28wjtqvm1aje" path="res://assets/third_person_adventure/environment/structures/abandoned_farmhouse.glb" id="5_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://cejrsiwhxyuwk" path="res://assets/third_person_adventure/environment/wasteland_props/wasteland_shed.glb" id="6_dgi5k"]
+[ext_resource type="PackedScene" uid="uid://b26d7pxnrxcux" path="res://assets/third_person_adventure/environment/wasteland_props/wasteland_blue_barrel.glb" id="10_pibwh"]
+[ext_resource type="PackedScene" uid="uid://yu2gmvjlvdpr" path="res://assets/third_person_adventure/environment/wasteland_props/wasteland_red_barrel.glb" id="11_c6pm6"]
+[ext_resource type="PackedScene" uid="uid://00r3gopthbl0" path="res://assets/third_person_adventure/environment/wasteland_props/wasteland_concrete_slab.glb" id="12_5he1u"]
+[ext_resource type="PackedScene" uid="uid://d4m37low7kfw3" path="res://assets/third_person_adventure/environment/wasteland_props/wasteland_worn_tire.glb" id="14_2cjbq"]
+[ext_resource type="PackedScene" uid="uid://q5huwyn6aasx" path="res://assets/third_person_adventure/environment/wasteland_props/wasteland_pebble_large.glb" id="15_chjal"]
+[ext_resource type="PackedScene" uid="uid://bhairydu77rap" path="res://assets/third_person_adventure/environment/wasteland_props/wasteland_pebble_small.glb" id="16_cjqg0"]
+[ext_resource type="Script" uid="uid://d06ifnywidyh2" path="res://scripts/adventure_collectible.gd" id="18_txyw0"]
+[ext_resource type="Script" uid="uid://6uylu3ebqxow" path="res://scripts/third_person_controller.gd" id="19_vc5cj"]
+[ext_resource type="Script" uid="uid://dh0hmy5mxt8sn" path="res://scripts/adventure_model_material_applier.gd" id="20_nvyfr"]
+[ext_resource type="Material" path="res://assets/third_person_adventure/characters/player_robot/materials/player_robot_material.tres" id="21_ty1g6"]
+[ext_resource type="PackedScene" uid="uid://hx13pgfdfmj" path="res://assets/third_person_adventure/characters/player_robot/player_robot.fbx" id="22_j2jfr"]
+[ext_resource type="Script" uid="uid://dkf0mwggmjjn3" path="res://scripts/humanoid_locomotion_animator.gd" id="23_bjg73"]
+[ext_resource type="Script" uid="uid://cm6eaw3ubcby3" path="res://scripts/third_person_camera.gd" id="24_bu4jf"]
+[ext_resource type="Script" uid="uid://c8skekvg7yu14" path="res://scripts/adventure_patrol_npc.gd" id="25_o7ddy"]
+[ext_resource type="Script" uid="uid://lp7nscnar5io" path="res://scripts/adventure_interactable.gd" id="26_0loja"]
+[ext_resource type="Script" uid="uid://dm1dkxeppqx7u" path="res://scripts/adventure_inventory.gd" id="27_ids8r"]
+[ext_resource type="Script" uid="uid://cvayfruyd2iwp" path="res://scripts/adventure_quest_state.gd" id="28_dnhof"]
+[ext_resource type="Script" uid="uid://byxxxiljaudrd" path="res://scripts/adventure_hud.gd" id="29_1v6qk"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_augu2"]
+rayleigh_coefficient = 2.35
+rayleigh_color = Color(0.31, 0.44, 0.72, 1)
+mie_coefficient = 0.006
+mie_eccentricity = 0.82
+mie_color = Color(0.86, 0.79, 0.66, 1)
+turbidity = 4.2
+sun_disk_scale = 1.7
+ground_color = Color(0.28, 0.25, 0.18, 1)
+energy_multiplier = 1.08
+
+[sub_resource type="Sky" id="Sky_tm6hj"]
+sky_material = SubResource("PhysicalSkyMaterial_augu2")
+
+[sub_resource type="Environment" id="Environment_kf5aa"]
+background_mode = 2
+sky = SubResource("Sky_tm6hj")
+ambient_light_source = 3
+ambient_light_color = Color(0.78, 0.86, 0.96, 1)
+ambient_light_energy = 1.08
+fog_enabled = true
+fog_light_color = Color(0.82, 0.9, 0.98, 1)
+fog_density = 0.0045
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_152kg"]
+albedo_color = Color(0.2, 0.8, 0.95, 1)
+emission_enabled = true
+emission = Color(0.18, 0.65, 0.9, 1)
+emission_energy_multiplier = 0.9
+
+[sub_resource type="SphereMesh" id="SphereMesh_r4e17"]
+radius = 0.35
+height = 0.7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y57op"]
+radius = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mlv25"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a82wo"]
+radius = 2.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gdvew"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kjtvk"]
+radius = 2.4
+
+[node name="World" type="Node3D" unique_id=1128466166]
+
+[node name="InputReader" type="Node" parent="." unique_id=1782902740]
+script = ExtResource("1_yq6so")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=771202434]
+environment = SubResource("Environment_kf5aa")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=909996636]
+transform = Transform3D(0.81915206, 0.45198438, -0.35312894, 0, 0.6156615, 0.7880107, 0.57357645, -0.6455006, 0.5043204, 0, 0, 0)
+light_color = Color(1, 0.93, 0.82, 1)
+light_energy = 3.8
+shadow_enabled = true
+shadow_opacity = 0.72
+
+[node name="FillLight" type="DirectionalLight3D" parent="." unique_id=558083293]
+transform = Transform3D(-0.64278764, -0.3596361, 0.67637706, 0, 0.88294756, 0.46947157, -0.76604444, 0.3017705, -0.5675478, 0, 0, 0)
+light_color = Color(0.68, 0.78, 1, 1)
+light_energy = 0.65
+
+[node name="Level" type="Node3D" parent="." unique_id=42821115]
+
+[node name="TerrainRoot" type="Node3D" parent="Level" unique_id=744672164]
+script = ExtResource("2_fv21b")
+
+[node name="Features" type="Node3D" parent="Level/TerrainRoot" unique_id=2112295394]
+
+[node name="ScoutCampFlatPad" type="Node3D" parent="Level/TerrainRoot/Features" unique_id=1051828917]
+transform = Transform3D(0.95105654, 0, -0.309017, 0, 1, 0, 0.309017, 0, 0.95105654, 10, 0.12, -8)
+script = ExtResource("3_tel4y")
+size = Vector2(20, 14)
+blend_radius = 5.0
+
+[node name="RelicClearingFlatPad" type="Node3D" parent="Level/TerrainRoot/Features" unique_id=2055300433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.12, -14)
+script = ExtResource("3_tel4y")
+size = Vector2(12, 10)
+
+[node name="StarterHomesteadFlatPad" type="Node3D" parent="Level/TerrainRoot/Features" unique_id=290304213]
+transform = Transform3D(0.99026805, 0, 0.1391731, 0, 1, 0, -0.1391731, 0, 0.99026805, -13, 0.12, 14)
+script = ExtResource("3_tel4y")
+size = Vector2(44, 32)
+blend_radius = 7.0
+
+[node name="Landmarks" type="Node3D" parent="Level" unique_id=1187003250]
+
+[node name="EnvironmentProps" type="Node3D" parent="Level" unique_id=1427293984]
+
+[node name="AbandonedFarmhouse" type="Node3D" parent="Level/EnvironmentProps" unique_id=1446976032 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(0.37576738, 0, -2.6737237, 0, 2.7, 0, 2.6737237, 0, 0.37576738, -16, 4, 14.5)
+script = ExtResource("4_qkpxi")
+material_profile = "farmhouse"
+
+[node name="AbandonedFarmhouseModel" parent="Level/EnvironmentProps/AbandonedFarmhouse" unique_id=369851581 instance=ExtResource("5_5q0nq")]
+transform = Transform3D(-0.91361654, 0, 0.4065771, 0, 1, 0, -0.4065771, 0, -0.91361654, 0, 0, 0)
+
+[node name="WastelandShed" type="Node3D" parent="Level/EnvironmentProps" unique_id=713106799 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(7.6084523, 0, -2.472136, 0, 8, 0, 2.472136, 0, 7.6084523, -5.6, 4, 18.2)
+script = ExtResource("4_qkpxi")
+material_profile = "shed"
+
+[node name="WastelandShedModel" parent="Level/EnvironmentProps/WastelandShed" unique_id=1962587313 instance=ExtResource("6_dgi5k")]
+transform = Transform3D(0.50000006, 0, 0.8660255, 0, 1, 0, -0.8660255, 0, 0.50000006, 0.6779354, 0, -0.22027493)
+
+[node name="WastelandCorrugatedFenceA" type="Node3D" parent="Level/EnvironmentProps" unique_id=2077562455 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(1.3596747, 0, 4.184649, 0, 4.4, 0, -4.184649, 0, 1.3596747, -6, 4, 9.2)
+
+[node name="WastelandBarbedFenceA" type="Node3D" parent="Level/EnvironmentProps" unique_id=1013281076 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(-0.14657773, 0, 4.1974416, 0, 4.2, 0, -4.1974416, 0, -0.14657773, -13, 4, 4.8)
+
+[node name="WastelandModularFenceA" type="Node3D" parent="Level/EnvironmentProps" unique_id=356626531 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(0.14657788, 0, 4.1974416, 0, 4.2, 0, -4.1974416, 0, 0.14657788, -19, 4, 6.2)
+
+[node name="WastelandBlueBarrel" type="Node3D" parent="Level/EnvironmentProps" unique_id=599513868 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(4.5179296, 0, 1.2954955, 0, 4.7, 0, -1.2954955, 0, 4.5179296, -8, 4, 15.6)
+
+[node name="WastelandBlueBarrelModel" parent="Level/EnvironmentProps/WastelandBlueBarrel" unique_id=1127671841 instance=ExtResource("10_pibwh")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.7708616, 0, 0.65542555)
+
+[node name="WastelandRedBarrel" type="Node3D" parent="Level/EnvironmentProps" unique_id=1282314561 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(4.149853, 0, -2.2065163, 0, 4.7, 0, 2.2065163, 0, 4.149853, -9.2, 4, 16.8)
+
+[node name="WastelandRedBarrelModel" parent="Level/EnvironmentProps/WastelandRedBarrel" unique_id=304552840 instance=ExtResource("11_c6pm6")]
+transform = Transform3D(0.9999997, 0, 8.940697e-08, 0, 0.9999997, 0, -8.940697e-08, 0, 0.9999997, 1.202458, 0, -0.16644573)
+
+[node name="WastelandConcreteSlab" type="Node3D" parent="Level/EnvironmentProps" unique_id=1612967478 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(4.5033317, 0, 2.6, 0, 5.2, 0, -2.6, 0, 4.5033317, -10.8, 4, 11.2)
+
+[node name="WastelandConcreteSlabModel" parent="Level/EnvironmentProps/WastelandConcreteSlab" unique_id=1788196459 instance=ExtResource("12_5he1u")]
+
+[node name="WastelandUtilityLight" type="Node3D" parent="Level/EnvironmentProps" unique_id=1663615205 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -7.4, 4, 12.8)
+
+[node name="WastelandWornTire" type="Node3D" parent="Level/EnvironmentProps" unique_id=1307246233 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(3.0783076, 0, 3.9400535, 0, 5, 0, -3.9400535, 0, 3.0783076, -11.8, 4, 17)
+
+[node name="WastelandWornTireModel" parent="Level/EnvironmentProps/WastelandWornTire" unique_id=12886343 instance=ExtResource("14_2cjbq")]
+
+[node name="WastelandPebbleLarge" type="Node3D" parent="Level/EnvironmentProps" unique_id=523983060 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -4.6, 4, 14.6)
+
+[node name="WastelandPebbleLargeModel" parent="Level/EnvironmentProps/WastelandPebbleLarge" unique_id=454097370 instance=ExtResource("15_chjal")]
+
+[node name="WastelandPebbleSmall" type="Node3D" parent="Level/EnvironmentProps" unique_id=1391031544 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -3.8, 4, 11.4)
+
+[node name="WastelandPebbleSmallModel" parent="Level/EnvironmentProps/WastelandPebbleSmall" unique_id=369627308 instance=ExtResource("16_cjqg0")]
+
+[node name="WastelandDryGrass" type="Node3D" parent="Level/EnvironmentProps" unique_id=1934840365 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.8, 4, 10.6)
+
+[node name="Collectibles" type="Node3D" parent="Level" unique_id=2040251259]
+
+[node name="Relic" type="Area3D" parent="Level/Collectibles" unique_id=1784266235 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.775118, 4, 13.889988)
+script = ExtResource("18_txyw0")
+
+[node name="RelicMesh" type="MeshInstance3D" parent="Level/Collectibles/Relic" unique_id=593799479]
+material_override = SubResource("StandardMaterial3D_152kg")
+mesh = SubResource("SphereMesh_r4e17")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Collectibles/Relic" unique_id=1896221808]
+shape = SubResource("SphereShape3D_y57op")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1758695199 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 6.578377)
+script = ExtResource("19_vc5cj")
+camera_path = NodePath("../CameraRig")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1646775283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_mlv25")
+
+[node name="SkinPivot" type="Node3D" parent="Player" unique_id=1928683850]
+script = ExtResource("20_nvyfr")
+target_path = NodePath("player_robot")
+material = ExtResource("21_ty1g6")
+
+[node name="player_robot" parent="Player/SkinPivot" unique_id=114400354 instance=ExtResource("22_j2jfr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Animator" type="Node" parent="Player" unique_id=676481471]
+script = ExtResource("23_bjg73")
+animation_player_path = NodePath("../SkinPivot/player_robot/AnimationPlayer")
+idle_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_idle.fbx"
+walk_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_walk.fbx"
+run_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_run.fbx"
+jump_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_jump.fbx"
+fall_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_fall.fbx"
+land_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_land.fbx"
+long_idle_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_long_idle.fbx"
+
+[node name="PlayerReadabilityLight" type="OmniLight3D" parent="Player" unique_id=1074269333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0.8)
+light_color = Color(1, 0.9, 0.74, 1)
+light_energy = 0.45
+omni_range = 6.0
+
+[node name="InteractSensor" type="Area3D" parent="Player" unique_id=199099577]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/InteractSensor" unique_id=22169468]
+shape = SubResource("SphereShape3D_a82wo")
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=704522288]
+script = ExtResource("24_bu4jf")
+target_path = NodePath("../Player")
+
+[node name="PitchPivot" type="Node3D" parent="CameraRig" unique_id=642178258]
+transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig/PitchPivot" unique_id=316655021]
+spring_length = 5.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/PitchPivot/SpringArm3D" unique_id=1897834734]
+current = true
+fov = 68.0
+
+[node name="AimRay" type="RayCast3D" parent="CameraRig/PitchPivot/SpringArm3D/Camera3D" unique_id=123966199]
+target_position = Vector3(0, 0, -20)
+
+[node name="NPCs" type="Node3D" parent="." unique_id=995213701]
+
+[node name="ScoutRobotNPC" type="CharacterBody3D" parent="NPCs" unique_id=1488952481 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -10)
+script = ExtResource("25_o7ddy")
+patrol_points_parent_path = NodePath("../../PatrolPoints/ScoutRobotPatrol")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCs/ScoutRobotNPC" unique_id=979338074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_gdvew")
+
+[node name="SkinPivot" type="Node3D" parent="NPCs/ScoutRobotNPC" unique_id=1611362727]
+script = ExtResource("20_nvyfr")
+target_path = NodePath("npc_robot")
+material = ExtResource("21_ty1g6")
+
+[node name="npc_robot" parent="NPCs/ScoutRobotNPC/SkinPivot" unique_id=848199991 instance=ExtResource("22_j2jfr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Animator" type="Node" parent="NPCs/ScoutRobotNPC" unique_id=49678142]
+script = ExtResource("23_bjg73")
+animation_player_path = NodePath("../SkinPivot/npc_robot/AnimationPlayer")
+idle_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_idle.fbx"
+walk_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_walk.fbx"
+run_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_run.fbx"
+long_idle_fbx = "res://assets/third_person_adventure/characters/player_robot/player_robot_long_idle.fbx"
+
+[node name="QuestGiverArea" type="Area3D" parent="NPCs/ScoutRobotNPC" unique_id=9638881]
+script = ExtResource("26_0loja")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCs/ScoutRobotNPC/QuestGiverArea" unique_id=1041214704]
+shape = SubResource("SphereShape3D_kjtvk")
+
+[node name="PatrolPoints" type="Node3D" parent="." unique_id=2047061353]
+
+[node name="ScoutRobotPatrol" type="Node3D" parent="PatrolPoints" unique_id=1777820644]
+
+[node name="PatrolA" type="Marker3D" parent="PatrolPoints/ScoutRobotPatrol" unique_id=1371286687 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -10)
+
+[node name="PatrolB" type="Marker3D" parent="PatrolPoints/ScoutRobotPatrol" unique_id=1725409966 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, -2)
+
+[node name="PatrolC" type="Marker3D" parent="PatrolPoints/ScoutRobotPatrol" unique_id=165573906 groups=["snap_to_adventure_terrain"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 6)
+
+[node name="Inventory" type="Node" parent="." unique_id=317104746]
+script = ExtResource("27_ids8r")
+
+[node name="QuestState" type="Node" parent="." unique_id=459996433]
+script = ExtResource("28_dnhof")
+hud_path = NodePath("../HUD")
+npc_interactable_path = NodePath("../NPCs/ScoutRobotNPC/QuestGiverArea")
+collectible_path = NodePath("../Level/Collectibles/Relic")
+inventory_path = NodePath("../Inventory")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=914822911]
+script = ExtResource("29_1v6qk")
+
+[node name="Root" type="Control" parent="HUD" unique_id=2061148845]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectiveLabel" type="Label" parent="HUD/Root" unique_id=1741690779]
+layout_mode = 0
+anchor_right = 0.55
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 520.0
+offset_bottom = 58.0
+text = "Talk to the scout."
