@@ -1,0 +1,39 @@
+{
+  "id": "third-person-adventure-slice",
+  "version": "1.0.1",
+  "name": "Third-Person Adventure Slice",
+  "engineMinVersion": "0.5.43",
+  "entryScene": "res://scenes/main.tscn",
+  "dimension": "3D",
+  "mechanics": [
+    "third-person-controller",
+    "orbit-camera",
+    "character-animation",
+    "terrain-generation",
+    "interactables",
+    "collectibles",
+    "inventory",
+    "quests",
+    "patrol-npc",
+    "hud"
+  ],
+  "genres": [
+    "action-adventure",
+    "adventure",
+    "third-person",
+    "open-world"
+  ],
+  "agentBrief": "A complete third-person open-world adventure slice (Godot 4.6, 3D, GDScript). ENTRY SCENE: res://scenes/main.tscn. Unlike the previously published zip of this template, this version SHIPS project.godot with the full input map already bound: move_forward W, move_back S, move_left A, move_right D, jump Space, sprint Shift, interact E, plus camera_left/camera_right/camera_up/camera_down declared as actions (the camera is mouse-driven, but scripts reference those action names and Godot errors on undeclared actions — do not delete them). PLAYER: scripts/third_person_controller.gd (CharacterBody3D: move, sprint, jump) + scripts/third_person_camera.gd (mouse-orbit camera) + scripts/humanoid_locomotion_animator.gd driving the rigged robot character in assets/third_person_adventure/characters/player_robot/; input is read through scripts/adventure_input_reader.gd. WORLD: terrain built by scripts/adventure_terrain_generator.gd + adventure_terrain_grid.gd with terrain_flat_pad.gd and terrain_road_path.gd; environment props placed by adventure_environment_prop_setup.gd and materials applied by adventure_model_material_applier.gd. GAMEPLAY SYSTEMS: interactables (adventure_interactable.gd), collectibles (adventure_collectible.gd), inventory (adventure_inventory.gd), quest state (adventure_quest_state.gd), patrolling NPCs (adventure_patrol_npc.gd), HUD (adventure_hud.gd). Physics layers are defined in scripts/adventure_layers.gd. tools/ holds dev-only inspect_* and verify_* scripts — not game runtime; do not wire them into scenes. No .godot cache ships, so the first editor scan re-imports the FBX and texture assets (takes minutes; it is not a hang). Use only assets under res://assets/third_person_adventure/ — the inventory is asset_manifest/third_person_adventure_assets.md. CUSTOMIZE BY: swapping the player model, retuning controller and camera @exports, editing scenes/main.tscn, and adding interactables, collectibles and quests on the existing systems — do not rewrite the controller/camera/animator spine.",
+  "shipsProjectGodot": true,
+  "userFacing": {
+    "tagline": "A complete third-person adventure slice: animated robot hero, orbit camera, quests and collectibles.",
+    "highlights": [
+      "Third-person controller with sprint, jump and smooth orbit camera",
+      "Fully rigged and animated robot player character",
+      "Generated terrain with roads, pads and placed environment props",
+      "Interactables, collectibles, inventory and quest state systems",
+      "Patrolling NPCs and a ready HUD",
+      "Input map ships bound and ready — open the project and play"
+    ]
+  }
+}
