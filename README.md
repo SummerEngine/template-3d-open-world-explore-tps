@@ -1,4 +1,4 @@
-# 3D Open World Explore TPS Template
+# Third-Person Adventure Slice (3D open-world explore TPS template)
 
 A third-person adventure starter template for Summer Engine/Godot projects. It gives you a small playable open-world slice with a controllable character, orbit camera, terrain, environmental props, a patrolling NPC, interaction prompts, a simple quest/relic pickup flow, and a lightweight inventory HUD.
 

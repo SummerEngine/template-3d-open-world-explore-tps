@@ -1,6 +1,6 @@
 {
   "id": "third-person-adventure-slice",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "Third-Person Adventure Slice",
   "engineMinVersion": "0.5.43",
   "entryScene": "res://scenes/main.tscn",
